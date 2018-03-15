@@ -30,7 +30,7 @@ getData("http://jservice.io/api/categories?count=5&offset=10")
             var counter = 0;
             for(const object of res["clues"]) {
                 if(counter != 5) {
-                    newFunction(object)
+                    showQuestion(object)
                     counter++;
                 }   
                 
@@ -39,18 +39,17 @@ getData("http://jservice.io/api/categories?count=5&offset=10")
     }
 })
 
-let newFunction = function(object) {
-    var answerDiv = document.createElement('div')
-    answerDiv.classList.add("answer")
+let showQuestion = function(object) {
+    var questionDiv = document.createElement('div')
+    questionDiv.classList.add("answer")
     var gridAnswers = document.querySelector('.grid-answers')
-    gridAnswers.appendChild(answerDiv)    
-    answerDiv.innerHTML = object["value"]
+    gridAnswers.appendChild(questionDiv)    
+    questionDiv.innerHTML = object["value"]
     
-    answerDiv.addEventListener("click", function() {
-        answerDiv.innerHTML = object["question"]
+    questionDiv.addEventListener("click", function() {
+        questionDiv.innerHTML = object["question"]
     })
 }
-
 
 
 
